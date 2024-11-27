@@ -1,0 +1,238 @@
+mongos> db.movies.find( { "year": 1903 } ).explain()
+{
+        "queryPlanner" : {
+                "winningPlan" : {
+                        "stage" : "SINGLE_SHARD",
+                        "shards" : [
+                                {
+                                        "explainVersion" : "1",
+                                        "shardName" : "shard2rs",
+                                        "connectionString" : "shard2rs/192.168.50.16:20004,192.168.50.16:20005,192.168.50.16:20006",
+                                        "serverInfo" : {
+                                                "host" : "8dc7029a950b",
+                                                "port" : 27017,
+                                                "version" : "8.0.3",
+                                                "gitVersion" : "89d97f2744a2b9851ddfb51bdf22f687562d9b06"
+                                        },
+                                        "namespace" : "test.movies",
+                                        "parsedQuery" : {
+                                                "year" : {
+                                                        "$eq" : 1903
+                                                }
+                                        },
+                                        "indexFilterSet" : false,
+                                        "queryHash" : "1E2C8188",
+                                        "planCacheKey" : "95F4B620",
+                                        "optimizationTimeMillis" : 0,
+                                        "maxIndexedOrSolutionsReached" : false,
+                                        "maxIndexedAndSolutionsReached" : false,
+                                        "maxScansToExplodeReached" : false,
+                                        "prunedSimilarIndexes" : false,
+                                        "winningPlan" : {
+                                                "isCached" : false,
+                                                "stage" : "FETCH",
+                                                "filter" : {
+                                                        "year" : {
+                                                                "$eq" : 1903
+                                                        }
+                                                },
+                                                "inputStage" : {
+                                                        "stage" : "IXSCAN",
+                                                        "keyPattern" : {
+                                                                "year" : "hashed"
+                                                        },
+                                                        "indexName" : "year_hashed",
+                                                        "isMultiKey" : false,
+                                                        "isUnique" : false,
+                                                        "isSparse" : false,
+                                                        "isPartial" : false,
+                                                        "indexVersion" : 2,
+                                                        "direction" : "forward",
+                                                        "indexBounds" : {
+                                                                "year" : [
+                                                                        "[8517873726613902448, 8517873726613902448]"
+                                                                ]
+                                                        }
+                                                }
+                                        },
+                                        "rejectedPlans" : [ ]
+                                }
+                        ]
+                }
+        },
+        "serverInfo" : {
+                "host" : "e737fd27eee6",
+                "port" : 27017,
+                "version" : "8.0.3",
+                "gitVersion" : "89d97f2744a2b9851ddfb51bdf22f687562d9b06"
+        },
+        "serverParameters" : {
+                "internalQueryFacetBufferSizeBytes" : 104857600,
+                "internalQueryFacetMaxOutputDocSizeBytes" : 104857600,
+                "internalLookupStageIntermediateDocumentMaxSizeBytes" : 104857600,
+                "internalDocumentSourceGroupMaxMemoryBytes" : 104857600,
+                "internalQueryMaxBlockingSortMemoryUsageBytes" : 104857600,
+                "internalQueryProhibitBlockingMergeOnMongoS" : 0,
+                "internalQueryMaxAddToSetBytes" : 104857600,
+                "internalDocumentSourceSetWindowFieldsMaxMemoryBytes" : 104857600,
+                "internalQueryFrameworkControl" : "trySbeRestricted",
+                "internalQueryPlannerIgnoreIndexWithCollationForRegex" : 1
+        },
+        "command" : {
+                "find" : "movies",
+                "filter" : {
+                        "year" : 1903
+                },
+                "lsid" : {
+                        "id" : UUID("e761bf12-c7a7-4791-986e-cab0ec8b629a")
+                },
+                "$clusterTime" : {
+                        "clusterTime" : Timestamp(1732656717, 1),
+                        "signature" : {
+                                "hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+                                "keyId" : NumberLong(0)
+                        }
+                },
+                "$db" : "test"
+        },
+        "ok" : 1,
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1732656747, 1),
+                "signature" : {
+                        "hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+                        "keyId" : NumberLong(0)
+                }
+        },
+        "operationTime" : Timestamp(1732656741, 1)
+}
+mongos> db.movies.find( { "year": 1978 } ).explain()
+{
+        "queryPlanner" : {
+                "winningPlan" : {
+                        "stage" : "SINGLE_SHARD",
+                        "shards" : [
+                                {
+                                        "explainVersion" : "1",
+                                        "shardName" : "shard1rs",
+                                        "connectionString" : "shard1rs/192.168.50.16:20001,192.168.50.16:20002,192.168.50.16:20003",
+                                        "serverInfo" : {
+                                                "host" : "4642b050692c",
+                                                "port" : 27017,
+                                                "version" : "8.0.3",
+                                                "gitVersion" : "89d97f2744a2b9851ddfb51bdf22f687562d9b06"
+                                        },
+                                        "namespace" : "test.movies",
+                                        "parsedQuery" : {
+                                                "year" : {
+                                                        "$eq" : 1978
+                                                }
+                                        },
+                                        "indexFilterSet" : false,
+                                        "queryHash" : "1E2C8188",
+                                        "planCacheKey" : "95F4B620",
+                                        "optimizationTimeMillis" : 0,
+                                        "maxIndexedOrSolutionsReached" : false,
+                                        "maxIndexedAndSolutionsReached" : false,
+                                        "maxScansToExplodeReached" : false,
+                                        "prunedSimilarIndexes" : false,
+                                        "winningPlan" : {
+                                                "isCached" : false,
+                                                "stage" : "FETCH",
+                                                "filter" : {
+                                                        "year" : {
+                                                                "$eq" : 1978
+                                                        }
+                                                },
+                                                "inputStage" : {
+                                                        "stage" : "IXSCAN",
+                                                        "keyPattern" : {
+                                                                "year" : "hashed"
+                                                        },
+                                                        "indexName" : "year_hashed",
+                                                        "isMultiKey" : false,
+                                                        "isUnique" : false,
+                                                        "isSparse" : false,
+                                                        "isPartial" : false,
+                                                        "indexVersion" : 2,
+                                                        "direction" : "forward",
+                                                        "indexBounds" : {
+                                                                "year" : [
+                                                                        "[-8566601289611360346, -8566601289611360346]"
+                                                                ]
+                                                        }
+                                                }
+                                        },
+                                        "rejectedPlans" : [ ]
+                                }
+                        ]
+                }
+        },
+        "serverInfo" : {
+                "host" : "e737fd27eee6",
+                "port" : 27017,
+                "version" : "8.0.3",
+                "gitVersion" : "89d97f2744a2b9851ddfb51bdf22f687562d9b06"
+        },
+        "serverParameters" : {
+                "internalQueryFacetBufferSizeBytes" : 104857600,
+                "internalQueryFacetMaxOutputDocSizeBytes" : 104857600,
+                "internalLookupStageIntermediateDocumentMaxSizeBytes" : 104857600,
+                "internalDocumentSourceGroupMaxMemoryBytes" : 104857600,
+                "internalQueryMaxBlockingSortMemoryUsageBytes" : 104857600,
+                "internalQueryProhibitBlockingMergeOnMongoS" : 0,
+                "internalQueryMaxAddToSetBytes" : 104857600,
+                "internalDocumentSourceSetWindowFieldsMaxMemoryBytes" : 104857600,
+                "internalQueryFrameworkControl" : "trySbeRestricted",
+                "internalQueryPlannerIgnoreIndexWithCollationForRegex" : 1
+        },
+        "command" : {
+                "find" : "movies",
+                "filter" : {
+                        "year" : 1978
+                },
+                "lsid" : {
+                        "id" : UUID("e761bf12-c7a7-4791-986e-cab0ec8b629a")
+                },
+                "$clusterTime" : {
+                        "clusterTime" : Timestamp(1732656747, 1),
+                        "signature" : {
+                                "hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+                                "keyId" : NumberLong(0)
+                        }
+                },
+                "$db" : "test"
+        },
+        "ok" : 1,
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1732656820, 1),
+                "signature" : {
+                        "hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+                        "keyId" : NumberLong(0)
+                }
+        },
+        "operationTime" : Timestamp(1732656819, 1)
+}
+mongos> sh.splitFind( "test.movies", { "year": "1955" } )
+{
+        "ok" : 1,
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1732656947, 12),
+                "signature" : {
+                        "hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+                        "keyId" : NumberLong(0)
+                }
+        },
+        "operationTime" : Timestamp(1732656947, 12)
+}
+mongos> sh.splitFind( "test.movies", { "year": "1903" } )
+{
+        "ok" : 1,
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1732656950, 4),
+                "signature" : {
+                        "hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+                        "keyId" : NumberLong(0)
+                }
+        },
+        "operationTime" : Timestamp(1732656950, 3)
+}

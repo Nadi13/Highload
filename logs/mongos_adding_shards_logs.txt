@@ -1,0 +1,57 @@
+ubuntu@ubuntu:~$ sudo mongo mongodb://192.168.50.16:30000
+MongoDB shell version v3.6.8
+connecting to: mongodb://192.168.50.16:30000
+Implicit session: session { "id" : UUID("355614b6-e9d0-42bf-ac23-7c6016d6588b") }
+MongoDB server version: 8.0.3
+WARNING: shell and server versions do not match
+Server has startup warnings:
+{"t":{"$date":"2024-11-26T19:56:14.885+00:00"},"s":"W",  "c":"CONTROL",  "id":22120,   "svc":"-", "ctx":"main","msg":"Access control is not enabled for the database. Read and write access to data and configuration is unrestricted","tags":["startupWarnings"]}
+
+mongos> sh.addShard("shard1rs/192.168.50.16:20001,192.168.50.16:20002,192.168.50.16:20003")
+{
+        "shardAdded" : "shard1rs",
+        "ok" : 1,
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1732651231, 20),
+                "signature" : {
+                        "hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+                        "keyId" : NumberLong(0)
+                }
+        },
+        "operationTime" : Timestamp(1732651231, 20)
+}
+mongos> sh.addShard("shard2rs/192.168.50.16:20004,192.168.50.16:20005,192.168.50.16:20006")
+{
+        "shardAdded" : "shard2rs",
+        "ok" : 1,
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1732651251, 23),
+                "signature" : {
+                        "hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+                        "keyId" : NumberLong(0)
+                }
+        },
+        "operationTime" : Timestamp(1732651251, 17)
+}
+mongos> sh.status()
+--- Sharding Status ---
+  sharding version: { "_id" : 1, "clusterId" : ObjectId("6746226ef28397d833f7bfce") }
+  shards:
+        {  "_id" : "shard1rs",  "host" : "shard1rs/192.168.50.16:20001,192.168.50.16:20002,192.168.50.16:20003",  "state" : 1,  "topologyTime" : Timestamp(1732651231, 10),  "replSetConfigVersion" : NumberLong(-1) }
+        {  "_id" : "shard2rs",  "host" : "shard2rs/192.168.50.16:20004,192.168.50.16:20005,192.168.50.16:20006",  "state" : 1,  "topologyTime" : Timestamp(1732651251, 8),  "replSetConfigVersion" : NumberLong(-1) }
+  active mongoses:
+        "8.0.3" : 1
+  autosplit:
+        Currently enabled: yes
+  balancer:
+        Currently enabled:  yes
+        Currently running:  no
+  databases:
+        {  "_id" : "config",  "primary" : "config",  "partitioned" : true }
+                config.system.sessions
+                        shard key: { "_id" : 1 }
+                        unique: false
+                        balancing: true
+                        chunks:
+
+mongos>

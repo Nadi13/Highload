@@ -1,0 +1,197 @@
+> rs.initiate(
+... {
+... _id: "shard1rs",
+... members: [
+... { _id : 0, host: "192.168.50.16:20001" },
+... { _id : 1, host: "192.168.50.16:20002" },
+... { _id : 2, host: "192.168.50.16:20003" }
+... ]
+... }
+... )
+{
+        "ok" : 1,
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1732650334, 1),
+                "signature" : {
+                        "hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+                        "keyId" : NumberLong(0)
+                }
+        },
+        "operationTime" : Timestamp(1732650334, 1)
+}
+shard1rs:SECONDARY> rs.status()
+{
+        "set" : "shard1rs",
+        "date" : ISODate("2024-11-26T19:46:13.826Z"),
+        "myState" : 1,
+        "term" : NumberLong(1),
+        "syncSourceHost" : "",
+        "syncSourceId" : -1,
+        "heartbeatIntervalMillis" : NumberLong(2000),
+        "majorityVoteCount" : 2,
+        "writeMajorityCount" : 2,
+        "votingMembersCount" : 3,
+        "writableVotingMembersCount" : 3,
+        "optimes" : {
+                "lastCommittedOpTime" : {
+                        "ts" : Timestamp(1732650365, 1),
+                        "t" : NumberLong(1)
+                },
+                "lastCommittedWallTime" : ISODate("2024-11-26T19:46:05.864Z"),
+                "readConcernMajorityOpTime" : {
+                        "ts" : Timestamp(1732650365, 1),
+                        "t" : NumberLong(1)
+                },
+                "appliedOpTime" : {
+                        "ts" : Timestamp(1732650365, 1),
+                        "t" : NumberLong(1)
+                },
+                "durableOpTime" : {
+                        "ts" : Timestamp(1732650365, 1),
+                        "t" : NumberLong(1)
+                },
+                "writtenOpTime" : {
+                        "ts" : Timestamp(1732650365, 1),
+                        "t" : NumberLong(1)
+                },
+                "lastAppliedWallTime" : ISODate("2024-11-26T19:46:05.864Z"),
+                "lastDurableWallTime" : ISODate("2024-11-26T19:46:05.864Z"),
+                "lastWrittenWallTime" : ISODate("2024-11-26T19:46:05.864Z")
+        },
+        "lastStableRecoveryTimestamp" : Timestamp(1732650334, 1),
+        "electionCandidateMetrics" : {
+                "lastElectionReason" : "electionTimeout",
+                "lastElectionDate" : ISODate("2024-11-26T19:45:45.813Z"),
+                "electionTerm" : NumberLong(1),
+                "lastCommittedOpTimeAtElection" : {
+                        "ts" : Timestamp(1732650334, 1),
+                        "t" : NumberLong(-1)
+                },
+                "lastSeenWrittenOpTimeAtElection" : {
+                        "ts" : Timestamp(1732650334, 1),
+                        "t" : NumberLong(-1)
+                },
+                "lastSeenOpTimeAtElection" : {
+                        "ts" : Timestamp(1732650334, 1),
+                        "t" : NumberLong(-1)
+                },
+                "numVotesNeeded" : 2,
+                "priorityAtElection" : 1,
+                "electionTimeoutMillis" : NumberLong(10000),
+                "numCatchUpOps" : NumberLong(0),
+                "newTermStartDate" : ISODate("2024-11-26T19:45:45.832Z"),
+                "wMajorityWriteAvailabilityDate" : ISODate("2024-11-26T19:45:46.328Z")
+        },
+        "members" : [
+                {
+                        "_id" : 0,
+                        "name" : "192.168.50.16:20001",
+                        "health" : 1,
+                        "state" : 1,
+                        "stateStr" : "PRIMARY",
+                        "uptime" : 218,
+                        "optime" : {
+                                "ts" : Timestamp(1732650365, 1),
+                                "t" : NumberLong(1)
+                        },
+                        "optimeDate" : ISODate("2024-11-26T19:46:05Z"),
+                        "optimeWritten" : {
+                                "ts" : Timestamp(1732650365, 1),
+                                "t" : NumberLong(1)
+                        },
+                        "optimeWrittenDate" : ISODate("2024-11-26T19:46:05Z"),
+                        "lastAppliedWallTime" : ISODate("2024-11-26T19:46:05.864Z"),
+                        "lastDurableWallTime" : ISODate("2024-11-26T19:46:05.864Z"),
+                        "lastWrittenWallTime" : ISODate("2024-11-26T19:46:05.864Z"),
+                        "syncSourceHost" : "",
+                        "syncSourceId" : -1,
+                        "infoMessage" : "Could not find member to sync from",
+                        "electionTime" : Timestamp(1732650345, 1),
+                        "electionDate" : ISODate("2024-11-26T19:45:45Z"),
+                        "configVersion" : 1,
+                        "configTerm" : 1,
+                        "self" : true,
+                        "lastHeartbeatMessage" : ""
+                },
+                {
+                        "_id" : 1,
+                        "name" : "192.168.50.16:20002",
+                        "health" : 1,
+                        "state" : 2,
+                        "stateStr" : "SECONDARY",
+                        "uptime" : 38,
+                        "optime" : {
+                                "ts" : Timestamp(1732650365, 1),
+                                "t" : NumberLong(1)
+                        },
+                        "optimeDurable" : {
+                                "ts" : Timestamp(1732650365, 1),
+                                "t" : NumberLong(1)
+                        },
+                        "optimeWritten" : {
+                                "ts" : Timestamp(1732650365, 1),
+                                "t" : NumberLong(1)
+                        },
+                        "optimeDate" : ISODate("2024-11-26T19:46:05Z"),
+                        "optimeDurableDate" : ISODate("2024-11-26T19:46:05Z"),
+                        "optimeWrittenDate" : ISODate("2024-11-26T19:46:05Z"),
+                        "lastAppliedWallTime" : ISODate("2024-11-26T19:46:05.864Z"),
+                        "lastDurableWallTime" : ISODate("2024-11-26T19:46:05.864Z"),
+                        "lastWrittenWallTime" : ISODate("2024-11-26T19:46:05.864Z"),
+                        "lastHeartbeat" : ISODate("2024-11-26T19:46:11.882Z"),
+                        "lastHeartbeatRecv" : ISODate("2024-11-26T19:46:12.864Z"),
+                        "pingMs" : NumberLong(0),
+                        "lastHeartbeatMessage" : "",
+                        "syncSourceHost" : "192.168.50.16:20001",
+                        "syncSourceId" : 0,
+                        "infoMessage" : "",
+                        "configVersion" : 1,
+                        "configTerm" : 1
+                },
+                {
+                        "_id" : 2,
+                        "name" : "192.168.50.16:20003",
+                        "health" : 1,
+                        "state" : 2,
+                        "stateStr" : "SECONDARY",
+                        "uptime" : 38,
+                        "optime" : {
+                                "ts" : Timestamp(1732650365, 1),
+                                "t" : NumberLong(1)
+                        },
+                        "optimeDurable" : {
+                                "ts" : Timestamp(1732650365, 1),
+                                "t" : NumberLong(1)
+                        },
+                        "optimeWritten" : {
+                                "ts" : Timestamp(1732650365, 1),
+                                "t" : NumberLong(1)
+                        },
+                        "optimeDate" : ISODate("2024-11-26T19:46:05Z"),
+                        "optimeDurableDate" : ISODate("2024-11-26T19:46:05Z"),
+                        "optimeWrittenDate" : ISODate("2024-11-26T19:46:05Z"),
+                        "lastAppliedWallTime" : ISODate("2024-11-26T19:46:05.864Z"),
+                        "lastDurableWallTime" : ISODate("2024-11-26T19:46:05.864Z"),
+                        "lastWrittenWallTime" : ISODate("2024-11-26T19:46:05.864Z"),
+                        "lastHeartbeat" : ISODate("2024-11-26T19:46:11.882Z"),
+                        "lastHeartbeatRecv" : ISODate("2024-11-26T19:46:12.864Z"),
+                        "pingMs" : NumberLong(0),
+                        "lastHeartbeatMessage" : "",
+                        "syncSourceHost" : "192.168.50.16:20001",
+                        "syncSourceId" : 0,
+                        "infoMessage" : "",
+                        "configVersion" : 1,
+                        "configTerm" : 1
+                }
+        ],
+        "ok" : 1,
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1732650365, 1),
+                "signature" : {
+                        "hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+                        "keyId" : NumberLong(0)
+                }
+        },
+        "operationTime" : Timestamp(1732650365, 1)
+}
+shard1rs:PRIMARY>
